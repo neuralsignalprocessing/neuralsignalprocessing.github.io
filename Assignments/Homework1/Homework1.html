@@ -10,6 +10,31 @@
 </head>
 <body>
 
+<style>
+    ol {
+        font-weight:bolder;
+    }
+
+    ol li span {
+        font-weight: normal;
+    }
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    }
+
+    td, th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(even) {
+    background-color: #59b185;
+    }
+</style>
+
 <div class="w3-center w3-light-blue w3-padding">
 <h2>Homework 1</h2>
 <p>Submit on Canvas by Friday 9/17/22 at 11:56 PM. Ask questions and discuss on Piazza.</p>
@@ -43,12 +68,12 @@
 <footer class="w3-container w3-light-blue">
 <h4>Objectives</h4>
 <ol class="w3-opacity">
-    <li>Clear understanding of the functionalities of Broca's <b>and</b> Wernicke's areas (15 points)</li>
-    <li>Creativity and critical thinking. There are multiple examples within this video that can be 
+    <li><span>Clear understanding of the functionalities of Broca's <b>and</b> Wernicke's areas (15 points)</span></li>
+    <li><span>Creativity and critical thinking. There are multiple examples within this video that can be 
         argued for as diagnoses of Donkey either having problems with his homologues of these two brain
         regions or the lack of their existence within his brain, however, it requires understanding of 
-        functionality along with creativity to make these arguments. (14 points)</li>
-    <li>Sense of humor (2 points)</li>
+        functionality along with creativity to make these arguments. (14 points)</span></li>
+    <li><span>Sense of humor (2 points)</span></li>
 </ol>
 </footer>
 
@@ -59,16 +84,87 @@
 <div class="w3-padding w3-light-blue w3-display-container">
 <h4>Membrane potentials, Nernst Equation, & GHK (50 points)</h4>
 <p class="w3-opacity">
-    Moo
+    Refer to PNS Chapter 7 for an explanation of the Nernst and Goldmann-Hodgkin-Katz equations. As discussed
+    in lecture 4 on 9/7/22, a neuron's resting potential is determined by the relative intra- and extra-cellular
+    ion concentrations and the corresponding conductivities of the respective ion channels. For a permeable
+    membrane, if an equilibrium is established (i.e., by active transport) in which the concentration of an
+    ion is different on either side but net passive flow of ions in and out is zero, an electrical potential
+    (a voltage) will exist which represents the point at which the force of diffusion is balanced by electostatic
+    forces. The Nernst equation gives the voltage as a function of the inside and outside concentrations.
+
+    <ol type="a" class="w3-opacity">
+        <li><span>
+            Use the Nernst equation to fill in the equilibrium potentials for potassium, sodium, and chloride in 
+            the table below.
+            <table>
+                <tr>
+                  <th>Ion</th>
+                  <th>Extracellular Concentration</th>
+                  <th>Intracellular Concentration</th>
+                  <th>Permeability</th>
+                  <th>Equilibrium Potential</th>
+                </tr>
+                <tr>
+                  <td>K+</td>
+                  <td>20 mM</td>
+                  <td>400 mM</td>
+                  <td>1</td>
+                  <td></td>
+                </tr>
+                <tr>
+                    <td>Na+</td>
+                    <td>440 mM</td>
+                    <td>50 mM</td>
+                    <td>0.04</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Cl-</td>
+                    <td>560 mM</td>
+                    <td>52 mM</td>
+                    <td>0.45</td>
+                    <td></td>
+                </tr>
+              </table><br>
+              When the membrane is permeable to multiple ions, the equilibrium that is established is similar, 
+              with the relative permeability for each ion determining its impact on the final membrane potential
+              in addition to its external and internal concentrations. The Goldmann equation (or GHK) gives the
+              equilbrium potential as a function of concentrations and relative permeabilities.
+        <br><br></span></li>
+        <li><span>
+            Taking into account the potassium, sodium, and chloride concentrations, calculate the resting
+            potential of a neuron with the characteristics in the table above.
+        <br><br></span></li>
+        <li><span>
+            How could you adjust the potassium level to raise the resting potential? Why does this work?
+        <br><br></span></li>
+        <li><span>
+            Calculate the new extracellular potassium concentration that would be needed to bring the resting
+            membrane potential to -65 mV. To counteract the decrease in potassium concentration, the cell could
+            insert or remove ion channels into the membrane thus changing the permiability ratios. Specifically,
+            which ion channels would you propose the cell insert or remove in order to recover the original
+            resting membrane potential? Calculate the new permeability ratios given your proposed change.
+        <br><br></span></li>
+        <li><span>
+            It has been shown that there is an increase in extracellular potassium concentration within the rat
+            hippocampus following fluid-precussion concussive brain injury. In general would the resting potential 
+            of a neuron in this region be higher or lower given this change? What might this change do for a neurons 
+            ability to fire an action potential assuming the threshold to required do so remains constant?
+        <br></span></li>
+    </ol>
 </p>
 </div>
 
 <footer class="w3-container w3-light-blue">
 <h4>Objectives</h4>
-<ol class="w3-opacity">
-    <li>Moo</li>
-    <li>Moo</li>
-    <li>Sense of humor (2 points)</li>
+<ol type='a' class="w3-opacity">
+    <li><span>Know how to plug & chug (5 points)</span></li>
+    <li><span>Know how to plug & chug after already having plugged & chugged (5 points)</span></li>
+    <li><span>Demonstrate critical thinking & understanding of membrane dynamics (10 points)</span></li>
+    <li><span>Plug & chug, yet again but some algebra! (5 points) Then understanding of membrane dynamics
+        in order change things properly with some plugging & chugging (15 points)
+    </span></li>
+    <li><span>Demonstrate critical thinking & understanding of membrane dynamics one more time (10 points)</span></li>
 </ol>
 </footer>
 
@@ -86,9 +182,9 @@
 <footer class="w3-container w3-light-blue">
 <h4>Objectives</h4>
 <ol class="w3-opacity">
-    <li>Moo</li>
-    <li>Moo</li>
-    <li>Moo</li>
+    <li><span>Moo</span></li>
+    <li><span>Moo</span></li>
+    <li><span>Moo</span></li>
 </ol>
 </footer>
 
