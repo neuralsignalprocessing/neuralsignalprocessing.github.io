@@ -16,7 +16,7 @@ sorting, decoding, characterization of neural systems, and field potential analy
 
 ## Instructor: [Shayok "Shay" Dutta](http://shayokdutta.github.io)
 
-## Graders/TAs: [Della Luo](), [Kayla Volkt]()
+## Graders/TAs: [Della Luo](), [Kayla Vokt]()
 ## Location: BRC286
 
 ## Time: Tuesdays/Thursdays 10:50 AM - 12:05 PM
