@@ -71,7 +71,7 @@
 
 <div class="w3-center w3-light-blue w3-padding">
 <h2>Homework 2 (110 points)</h2>
-<p>Submit on Canvas by Tuesday 10/04/22 at 11:43 PM. Ask questions and discuss on Piazza. Have fun!</p>
+<p>Submit on Canvas by Tuesday 10/11/22 at 11:43 PM. Ask questions and discuss on Piazza. Have fun!</p>
 </div>   
 
 <header class="w3-container w3-teal">
@@ -103,7 +103,7 @@
 
 <footer class="w3-container w3-light-blue">
 <h4>Objectives</h4>
-<ol class="w3-opacity">
+<ol type='a' class="w3-opacity">
     <li><span>Understanding of how a Poisson process is defined with multiple neurons. Demonstrating ISI distribution
         model function from the raw recorded spike train. (25 points)
     </span></li>
@@ -245,26 +245,67 @@
 
 <div class="w3-padding w3-light-blue w3-display-container">
     <h4>Describing Real Data (40 points)</h4>
-    <!-- <h5>...aka mild derivation torture :P</h5> -->
+    <p><pre>
+        .__....._             _.....__,
+        .": o :':         ;': o :".
+        `. `-' .'.       .'. `-' .'
+          `---'             `---'
+
+_...----...      ...   ...      ...----..._
+.-'__..-""'----    `.  `"`  .'    ----'""-..__`-.
+'.-'   _.--"""'       `-._.-'       '"""--._   `-.`
+'  .-"'                  :                  `"-.  `
+'   `.              _.'"'._              .'   `
+    `.       ,.-'"       "'-.,       .'
+      `.                           .'
+        `-._                   _.-'
+            `"'--...___...--'"`
+    </pre></p>
     <p class="w3-opacity">
-        Moo
-        <ol type="a" class="w3-opacity">
+        Here, we will characterize the neural activity recorded on a multielectrode array in a kitty's visual 
+        cortex available at <a href="https://elec548.github.io/Assignments/hw2problem3.npy" target="_blank">hw2problem3.npy</a> or
+        <a href="https://elec548.github.io/Assignments/hw2problem3.mat" target="_blank">hw2problem3.mat</a>. 
+        Spike times in (microseconds) for 10 neurons are given in <code>spiketimes</code>, a 10 element numpy array, 
+        where each element is a numpy vector of spiketimes. The time-varying stimulus is described in the <code>stimulus</code> numpy array,
+        where the first column is timestamps (regularly sampled at 5 ms) and the second column is the direction of motion
+        (in degrees) of a moving bar. Stimulus directions are randomized, each direction is maintained for 4 s, and directions are
+        repeated 8 times. You can load the data into <code>Python</code> as follows:
+        <pre><code id="python_code1" class="w3-opacity">import numpy as np
+[stimulus, spiketimes] = np.load('hw2problem3.npy')</code></pre>
+
+<ol type="a" class="w3-opacity">
             <li><span>
-                Moo
+                Neural activity in the visual cortex was recorded while the cat (meow) was viewing drifting bars (like in the 
+                Hubel and Weisel video shown in class) that cycled through different angles. Plot the "tuning curve" for the activity
+                of the 10th neuron, show how the mean number of spikes varies as a function of the moving bar. Does this neuron have 
+                one "preferred direction"? Why might the directional tuning curve be shaped the way it is? 
+                <u><i onclick="document.getElementById('3a').style.display='block'">Click for hint!</u></i>
             </span></li><br>
             <li><span>
-                Moo
+                Calculate the tuning curves for <i>all</i> the neurons. Plot a histogram of the "preferred direction"
+                (i.e., direction of stimulus which produces the maximum average spiking) of the neurons. Plot a histogram of the 
+                "maximum firing rate" (i.e., the average firing rate for the preferred direction).
             </span></li><br>
             <li><span>
-                Moo
-            </span></li>
+                Select the neuron with the largest maximum firing rate. For each stimulus direction calculate the mean spiking rate 
+                and variance from this mean in the number of spikes observed in one stimulus presentation. Calculate the fano factor
+                for each stimulus direction and compare to what is expected for a Poisson process. Repeat for the neuron with the largest
+                average (i.e., across all directions) firing rate. 
+            </span></li><br>
+            <li><span>
+                For the neurons in part c, create ISI distributions for spikes during stimuli in the preferred direction. Compare this to
+                the ISI distribution expected under a Poisson approximation.
+            </span></li><br>
+            <s><li><span>
+                (Extra Credit) For the neurons in part (c), use the time-rescaling theorem to renormalize the ISIs for all stimulus directions (i.e., assuming a piece-wise constant inhomogeneous Poisson process). Plot the resulting ISI distribution. Conduct a goodness-of-fit test on the spikes. Is the piece-wise Poisson model a good one?
+            </span></li></s>
         </ol>
     </p>
     </div>
     
     <footer class="w3-container w3-light-blue">
     <h4>Objectives</h4>
-    <ol class="w3-opacity">
+    <ol type='a' class="w3-opacity">
         <li><span>
             Moo
         </span></li>
@@ -272,23 +313,50 @@
             Moo moo!
         </span></li>
         <li><span>A big moo moo</span></li>
+        <li><span>An even bigger moo moo</span></li>
+        <li><span>Why is the time-rescaling theorem even relevant? Like seriously idk. I've read the paper and still dont know. Help me understand.
+            I'm sure I'm missing something!
+        </span></li>
     </ol>
 </footer>
+
+<div id="3a" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('3a').style.display='none'"
+        class="w3-button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            The x-axis of the plot should be stimulus direction and the y-axis should be “average spikes per second”.
+            <br>🤔Might there be some sort of symmetry for opposite directions? 🤔
+        </div>
+    </div>
+</div>
 
 
 <script type="text/javascript">
     window.onload = function(){
         var codeElement = document.getElementById('python_code');
+        var codeElement1 = document.getElementById('python_code1');
         // Add code mirror class for coloring (default is the theme)
         codeElement.classList.add( 'cm-s-default' );
         var code = codeElement.innerText;
 
+        codeElement1.classList.add( 'cm-s-default' );
+        var code1 = codeElement1.innerText;
+
         codeElement.innerHTML = "";
+        codeElement1.innerHTML = "";
 
         CodeMirror.runMode(
           code,
           'python',
           codeElement
+        )
+        CodeMirror.runMode(
+          code1,
+          'python',
+          codeElement1
         );
     };
 </script>
@@ -299,6 +367,7 @@
     var modal1 = document.getElementById('2a');
     var modal2 = document.getElementById('2b');
     var modal3 = document.getElementById('2d');
+    var modal4 = document.getElementById('3a');
     
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
@@ -315,6 +384,9 @@
         if (event.target == modal3) {
             modal3.style.display = "none";
         }
+        if (event.target == modal4) {
+            modal4.style.display = "none";
+        }
     }
     document.addEventListener("keydown", ({key}) => {
       if(key == "Escape"){
@@ -322,6 +394,7 @@
         modal1.style.display = "none"
         modal2.style.display = "none"
         modal3.style.display = "none"
+        modal4.style.display = "none"
       }
     })
 </script>  
