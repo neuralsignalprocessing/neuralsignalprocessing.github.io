@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 2</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/lib/codemirror.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/addon/runmode/runmode-standalone.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/mode/python/python.min.js"></script>
+</head>
+<body>
+
+<style>
+
+    pre code {
+        background-color: #59b185;
+        border: 2px solid #59b185;
+        display: block;
+    }
+    code {
+        background-color: #59b185;
+        padding: 2px;
+    }
+
+    ol {
+        font-weight:bolder;
+    }
+
+    ol li span {
+        font-weight: normal;
+    }
+
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    }
+
+    td, th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(odd) {
+    background-color: #59b185;
+    }
+
+    blockquote {
+    margin: 0;
+    }
+
+    blockquote p {
+        padding: 15px;
+        background: #dddddd;
+        border-radius: 5px;
+    }
+
+    blockquote p::before {
+        content: '\201C';
+    }
+
+    blockquote p::after {
+        content: '\201D';
+    }
+</style>
+
+
+<div class="w3-center w3-light-blue w3-padding">
+<h2>Homework 2 (110 points)</h2>
+<p>Submit on Canvas by Tuesday 10/04/22 at 11:43 PM. Ask questions and discuss on Piazza. Have fun!</p>
+</div>   
+
+<header class="w3-container w3-teal">
+<h3>Problem 1</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+<h4>Properties of the <u><i onclick="document.getElementById('meme').style.display='block'">Poisson</u></i> Random Processes (30 points)</h4>
+<p class="w3-opacity">
+    Action potential waveforms from multiple neurons can be recorded on a single electrode. Imagine that 
+    exactly two neurons are contributing spikes to the signal you are recording. <i>Each neuron is spiking
+        <b>independently according to a Poisson process</b> with rate λ1 and λ2, respectively.
+    </i>
+
+    <ol type='a' class="w3-opacity">
+        <li><span>
+            The <b>raw spike train</b> recorded on the electrode <b><i>is</i></b> a <b>Poisson process</b>. <b>Show</b> that the 
+            <b>raw spike train</b> <b><i>has</i></b> an <b>exponential ISI distribution</b>. 
+        </span></li>
+        <li><span>
+            What is the rate of raw spike train Poisson process?
+        </span></li>
+        <li><span>
+            What is the probability probability that each neuron will spike once within the same 1 ms interval?
+        </span></li>
+    </ol>
+</p>
+</div>
+
+<footer class="w3-container w3-light-blue">
+<h4>Objectives</h4>
+<ol class="w3-opacity">
+    <li><span>Understanding of how a Poisson process is defined with multiple neurons. Demonstrating ISI distribution
+        model function from the raw recorded spike train. (25 points)
+    </span></li>
+    <li><span>Understand combined superposition rates. (2 points)</span></li>
+    <li><span>Properly plugging and chugging (i.e., what variables are represented in the model as what exactly?) (3 points)</span></li>
+</ol>
+</footer>
+
+<div id="meme" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('meme').style.display='none'"
+        class="w3-button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            <h5>Congrats you found my easter egg!</h5>
+            <iframe width="500" height="410" 
+            src="https://www.youtube.com/embed/NcKGw-IO5Uc" 
+            title="Kuzco's poison" frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+
+<header class="w3-container w3-teal">
+<h3>Problem 2</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+<h4>Point Process Model Validation (40 points)</h4>
+<p class="w3-opacity">
+    We can describe the number of spikes a neuron produces in a one second window using a wide variety of random process models. Let's
+    refer to the parameters of a given model as θ, and a set of neural counts as <b>n</b>. We can evaluate the quality of the model by
+    asking for which model/parameters the likelihood of the data, P(θ∣<b>n</b>), is maximized. In this problem you will try to determine
+    the model for the spikes from a synthetic neuron. 
+
+    <ol type="a" class="w3-opacity">
+        <li><span>
+            Look at the data in the numpy data file <a href="https://elec548.github.io/Assignments/hw2problem2A.npy" target="_blank">hw2problem2A.npy</a>.
+            This file contains two variables, <code>SpikeTimes</code> and <code>SpikeCounts</code>. <code>SpikeTimes</code> is a list of spike times recorded in one experimental 
+            trial (each trial is 1 s for simplicity) from a neuron. For each trial, for convenience, the number of spikes is provided in the corresponding element of <code>SpikeCount</code>
+            . You can load the data into <code>Python</code> using the following:<br>
+            
+            <pre><code id="python_code">import numpy as np
+[SpikeTimes, SpikeCount] = np.load("hw2problem2a.npy")</code></pre>
+            <table>
+            Note that you can find the MATLAB format <a href="https://elec548.github.io/Assignments/hw2problem2A.mat" target="_blank">hw2problem2a.mat</a>. Consider two possible 
+            models for the number of spikes per trail as per the table below.<br><br>
+                <tr>
+                  <th>Model</th>
+                  <th>Parameters</th>
+                </tr>
+                <tr>
+                  <td>Gaussian</td>
+                  <td>Mean = 10.2, Variance = 9.5</td>
+                </tr>
+                <tr>
+                    <td>Poisson</td>
+                    <td>Rate = 9.8</td>
+                </tr>
+              </table><br>
+            Using the data provided evaluate which set of parameters best describes the data. 
+            <u><i onclick="document.getElementById('2a').style.display='block'">Click for hint!</u></i>
+        <br><br></span></li>
+        <li><span>
+            Now split the data into training and validation sets, use the training sets to train a Gaussian model and a Poisson model, and use the validation set to assess which model fits
+            the data best <u><i onclick="document.getElementById('2b').style.display='block'">Click for hint!</u></i>
+        <br><br></span></li>
+        <li><span>
+            <i>Point Processes.</i> Consider the actual spike times from <b>a</b> (given in the <code>SpikeTimes</code> list). If you were to model this neuron with a Poisson process, would you use a constant or a time-varying rate over the
+            1 second window? Justify your answer with one or more plots.
+        <br><br></span></li>
+        <li><span>
+            <i>Fano Factor / ISI Distribution.</i> Consider the spike times returned by a different neuron (<a href="https://elec548.github.io/Assignments/hw2problem2D.npy" target="_blank">npy</a>, <a href="https://elec548.github.io/Assignments/hw2problem2D.mat" target="_blank">mat</a>).
+            The data structure is identical to the neuron from part <b>a</b> so loading the data is the same code but with a new filename.
+            <br><br>
+            If you were to model this neuron with a Poisson process would you use a constant or time-varying rate? 
+            Do the variance and mean of the count distribution have the relationship you would expect for a Poisson Process? What <b>physiological process</b> might 
+            you observe in the spike times that would explain your answer to the previous inquiry? <u><i onclick="document.getElementById('2d').style.display='block'">Click for hint!</u></i>
+        <br><br></span></li>
+    </ol>
+</p>
+</div>
+
+<footer class="w3-container w3-light-blue">
+<h4>Objectives</h4>
+<ol type='a' class="w3-opacity">
+    <li><span>Demonstration of practical usage of comparisons and critical thinking of "fair" model evaluation/comparison. (10 points)</span></li>
+    <li><span>Proper understanding of training and validation sets (2 points). Demonstration of critical thinking of "fair" and "robust" model comparison. (8 points)</span></li>
+    <li><span>Critical thinking of how to justify model usage. (10 points)</span></li>
+    <li><span>Justification of usage of constant vs time-varying rates which also requires understanding of the concepts of (1) the Poisson processes and it's parameters and (2)
+        the biophysical understanding of neurons covered earlier in the course (10 points).
+    </span></li>
+</ol>
+</footer>
+
+<!-- Modals -->
+<div id="2a" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('2a').style.display='none'"
+        class="w3-button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            You should calculate the likelihood of each model. In other words, calculate the probability of, e.g., data from 1000 trials of the simulated data given one model or the other?
+        </div>
+    </div>
+</div>
+<div id="2b" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('2b').style.display='none'"
+        class="w3-button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            You should use the maximum likelihood estimate for the parameters of the models, which will be the sample mean and variance of the training data for 
+            the Gaussian and the sample mean for the Poisson.
+        </div>
+    </div>
+</div>
+<div id="2d" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('2d').style.display='none'"
+        class="w3-button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            You’ll want to actually look at the spike times. 
+            Generating a peri-stimulus time histogram (PSTH) showing
+            the average number of spikes in small bins of time will 
+            help explain your observations.
+        </div>
+    </div>
+</div>
+
+<header class="w3-container w3-teal">
+<h3>Problem 3</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+    <h4>Describing Real Data (40 points)</h4>
+    <!-- <h5>...aka mild derivation torture :P</h5> -->
+    <p class="w3-opacity">
+        Moo
+        <ol type="a" class="w3-opacity">
+            <li><span>
+                Moo
+            </span></li><br>
+            <li><span>
+                Moo
+            </span></li><br>
+            <li><span>
+                Moo
+            </span></li>
+        </ol>
+    </p>
+    </div>
+    
+    <footer class="w3-container w3-light-blue">
+    <h4>Objectives</h4>
+    <ol class="w3-opacity">
+        <li><span>
+            Moo
+        </span></li>
+        <li><span>
+            Moo moo!
+        </span></li>
+        <li><span>A big moo moo</span></li>
+    </ol>
+</footer>
+
+
+<script type="text/javascript">
+    window.onload = function(){
+        var codeElement = document.getElementById('python_code');
+        // Add code mirror class for coloring (default is the theme)
+        codeElement.classList.add( 'cm-s-default' );
+        var code = codeElement.innerText;
+
+        codeElement.innerHTML = "";
+
+        CodeMirror.runMode(
+          code,
+          'python',
+          codeElement
+        );
+    };
+</script>
+
+<script>
+    // Get the modal
+    var modal0 = document.getElementById('meme');
+    var modal1 = document.getElementById('2a');
+    var modal2 = document.getElementById('2b');
+    var modal3 = document.getElementById('2d');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal0) {
+            modal0.style.display = "none";
+        }
+
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+    }
+    document.addEventListener("keydown", ({key}) => {
+      if(key == "Escape"){
+        modal0.style.display = "none"
+        modal1.style.display = "none"
+        modal2.style.display = "none"
+        modal3.style.display = "none"
+      }
+    })
+</script>  
+
+</body>
+</html>
