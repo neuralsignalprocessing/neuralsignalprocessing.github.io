@@ -174,7 +174,7 @@
         <br><br></span></li>
         <li><span>
             <i>Point Processes.</i> Consider the actual spike times from <b>a</b> (given in the <code>SpikeTimes</code> list). If you were to model this neuron with a Poisson process, would you use a constant or a time-varying rate over the
-            1 second window? Justify your answer with one or more plots.
+            1 second window? Justify your answer with one or more plots. <u><i onclick="document.getElementById('2c').style.display='block'">Click for hint!</u></i>
         <br><br></span></li>
         <li><span>
             <i>Fano Factor / ISI Distribution.</i> Consider the spike times returned by a different neuron (<a href="https://elec548.github.io/Assignments/hw2problem2D.npy" target="_blank">npy</a>, <a href="https://elec548.github.io/Assignments/hw2problem2D.mat" target="_blank">mat</a>).
@@ -221,6 +221,17 @@
         <div class="w3-padding w3-teal">
             You should use the maximum likelihood estimate for the parameters of the models, which will be the sample mean and variance of the training data for 
             the Gaussian and the sample mean for the Poisson.
+        </div>
+    </div>
+</div>
+<div id="2b" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('2c').style.display='none'"
+        class="w3-button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            The plot of the fake data in the <a href="https://photos.app.goo.gl/8FVxdhRQbdBwYWuz6" target="_blank">IPad notes</a> was used to evaluate poisson models
         </div>
     </div>
 </div>
@@ -371,6 +382,7 @@ _...----...      ...   ...      ...----..._
     var modal0 = document.getElementById('meme');
     var modal1 = document.getElementById('2a');
     var modal2 = document.getElementById('2b');
+    var modal2 = document.getElementById('2c');
     var modal3 = document.getElementById('2d');
     var modal4 = document.getElementById('3a');
     
