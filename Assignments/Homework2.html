@@ -224,7 +224,7 @@
         </div>
     </div>
 </div>
-<div id="2b" class="w3-modal">
+<div id="2c" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-top">
         <header class="w3-container w3-teal"> 
         <span onclick="document.getElementById('2c').style.display='none'"
@@ -382,7 +382,7 @@ _...----...      ...   ...      ...----..._
     var modal0 = document.getElementById('meme');
     var modal1 = document.getElementById('2a');
     var modal2 = document.getElementById('2b');
-    var modal2 = document.getElementById('2c');
+    var modal2c = document.getElementById('2c');
     var modal3 = document.getElementById('2d');
     var modal4 = document.getElementById('3a');
     
@@ -404,6 +404,9 @@ _...----...      ...   ...      ...----..._
         if (event.target == modal4) {
             modal4.style.display = "none";
         }
+        if (event.target == modal2c) {
+            modal2c.style.display = "none";
+        }
     }
     document.addEventListener("keydown", ({key}) => {
       if(key == "Escape"){
@@ -412,6 +415,7 @@ _...----...      ...   ...      ...----..._
         modal2.style.display = "none"
         modal3.style.display = "none"
         modal4.style.display = "none"
+        modal2c.style.display = "none"
       }
     })
 </script>  
