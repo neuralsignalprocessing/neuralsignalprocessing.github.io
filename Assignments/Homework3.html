@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 3</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/lib/codemirror.min.css">
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/addon/runmode/runmode-standalone.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/mode/python/python.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css" integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js" integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz" crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+</head>
+<body>
+
+<style>
+    pre code {
+        background-color: #59b185;
+        border: 2px solid #59b185;
+        display: block;
+    }
+    code {
+        background-color: #59b185;
+        padding: 2px;
+    }
+
+    ol {
+        font-weight:bolder;
+    }
+
+    ol li span {
+        font-weight: normal;
+    }
+
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    }
+
+    td, th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(odd) {
+    background-color: #59b185;
+    }
+
+    blockquote {
+    margin: 0;
+    }
+
+    blockquote p {
+        padding: 15px;
+        background: #dddddd;
+        border-radius: 5px;
+    }
+
+    blockquote p::before {
+        content: '\201C';
+    }
+
+    blockquote p::after {
+        content: '\201D';
+    }
+</style>
+
+
+<div class="w3-center w3-light-blue w3-padding">
+<h2>Homework 3 (100 points)</h2>
+<p>Submit on Canvas by Tuesday 10/25/22 at 11:53 PM. Ask questions and discuss on Piazza. Have fun!</p>
+</div>   
+
+<header class="w3-container w3-teal">
+<h3>Data set description</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+<p class="w3-opacity">
+    The data (in the file <code>ReachData.npz</code>) is available <a href="Homework3/ReachData.npz" target="_blank">here</a> and can be loaded
+    as shown below. Please note that a .mat file of the same data for those who prefer MATLAB has been made available under Files --> Data on 
+    Canvas due to size restrictions on github. Unfortunately, I will not be able to provide any MATLAB coding support. A demo notebook playing
+    around a little with the data will be shared at this link <a href="#" target="_blank">here</a> (not uploaded yet).
+</p>
+<pre class = 'w3-opacity'><code id="python_code">import numpy as np
+reachDataFile = np.load("ReachData.npz",allow_pickle=True)
+spikeTimes = reachDataFile['spikeTimes']
+timeTouchHeld = reachDataFile['timeTouchHeld']
+timeGoCue = reachDataFile['timeGoCue']
+timeTargetAcquire = reachDataFile['timeTargetAcquire']
+cfr = reachDataFile['cfr']</code></pre>
+<p class = 'w3-opacity'>
+Data description: There are 1127 trials, $D$, and 190 neurons, $N$. Each of the 1127 rows in the data arrays are in
+order of the trial meaning row \(d\) of each variable corresponds to row $d$ every other variable. Please note that all 
+times are given in ms. 
+        <ul class="w3-opacity">
+        <li><span>
+            <b>spikeTimes</b>: 1127 x 190. Each row represents a trial and each column represents the spike times for each neuron. 
+            This is a 3 dimensional structure in this regard as each column representing an individual neuron can have different 
+            number of spike times depending on the trial number. 
+        </span></li>
+        <li><span>
+            <b>timeTouchHeld</b>: 1127 x 1. The data here represents the time the reach target appears and movement planning nominally
+            begins.
+        </span></li>
+        <li><span>
+            <b>timeGoCue</b>: 1127 x 1. This time point at which the light is no longer flashing and the animal is cued to move (movement 
+            period begins) and the planning period is nominally over. 
+        </span></li>
+        <li><span>
+            <b>timeTargetAcquire</b>: 1127 x 1. The animal has completed the movement. Movement period over. 
+        </span></li>
+        <li><span>
+            <b>cfr</b>: 1127 x 1. The 8 different reach targets for each trial.
+        </span></li>
+    </ol>
+<br>
+
+<u><b onclick="document.getElementById('Note').style.display='block'">CLICK FOR NOTE!</b></u>
+
+</p>
+</div>
+
+<!-- Modals -->
+<div id="Note" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('Note').style.display='none'"
+        class="w3-type='a'button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            Creating <i>spike count vectors</i> from the spike times provided
+            is a big part of all three questions. These vectors will be of 
+            size $N$x$1$, where $N$ is the total number of neurons (190). All
+            of the classification will be on these vectors, and you should 
+            combine across neurons <i>by taking the product of probabilites</i>
+            (not by doing anything that would colapse across neurons or mix 
+            their information).
+        </div>
+    </div>
+</div>
+
+<header class="w3-container w3-teal">
+<h3>Problem 1</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+    <h4>Plan data only vs movement data (30 points)</h4>
+    <p class="w3-opacity">
+        Define two windows of spikes, the "plan window" encompassing spikes which were emitted between
+        target onset and the go cue, and the "movement window" encompassing spikes which were emitted between
+        the go cue and the time movement ends (note that both types of windows are of different lengths for 
+        for different trials). Here is example code to find the array of spikes in the plan window:
+        <pre class = 'w3-opacity'><code id="python_code1">planSpikes = []
+for trialIdx, trialSpikes in enumerate(spikeTimes):
+    planSpikes.append([np.sum((st > timeTouchHeld[trialIdx]) &
+     (st < timeGoCue[trialIdx])) for st in trialSpikes])
+planSpikes = np.array(planSpikes) # will be 1127 x 190 </code></pre>
+
+Randomly choose 50 trials per target to be set as the training data (400 trials total). The remainng trials
+will be used as test data. We can describe the number of spikes that a neuron produces in each window (vector
+of neural counts as $\textbf{n}_{plan}$ and $\textbf{n}_{move}$, where $\textbf{n}\in\mathbb{R}^{N}$, where $N$ is
+the number of neurons) using a wide variety of random process models. Use the training data to estimate the parameters
+of a target- direction-dependent vector Poisson process, i.e., $Pr(\textbf{n}∣target_k)∼Poisson(\textbf{λ}_k)$
+$=$ $\prod^N_n$ $=$ $Poisson(\textbf{λ}_{k,n})$.
+In other words, calculate a Poisson model for <i>each neuron</i> and class - the rate for a class will be a vector the
+size of the number of neurons. For each of the remaining test trials estimate the maximum <b>log</b>likelihood reach target. 
+What is the overall decoding accuracy (i.e., what fraction of trials are decoded correctly) using only the plan window data? 
+Using only the movement window data? Combining both plan and movement data? 
+<br><br>
+<u><b onclick="document.getElementById('Beware').style.display='block'">CLICK FOR BEWARES AND ONE HELPFUL HINT!</b></u>
+    </p>
+</div>
+    
+    <footer class="w3-container w3-light-blue">
+    <h4>Objectives</h4>
+    <ol type='a' class="w3-opacity">
+        <li><span>
+            These will be updated soon (this weekend)! I just want to get this homework available for everyone asap!
+        </span></li>
+        <li><span>
+            Moo!
+        </span></li>
+    </ol>
+</footer>
+
+<!-- Modals -->
+<div id="Beware" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('Beware').style.display='none'"
+        class="w3-type='a'button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            <ol type='1' class="w3-opacity">
+                <li><span>
+                    If you are getting decoding numbers below 90%, you probably have not calculated 
+                    <b>rates</b> or properly applied the <b>rates</b> to the right duration windows
+                    each trial. Remember that a Poisson process is defined by $\lambda * \textbf{T}$!
+                </span></li>
+                <li><span>
+                    If you have estimated a rate to be 0 for a particular reach direction, this will likely 
+                    cause problems. Be pseudo-Bayesian. Never go full Bayesian. And please replace the 0s 
+                    with a smol number. 
+                </span></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<header class="w3-container w3-teal">
+<h3>Problem 2</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+<h4>Amount of plan data (40 points)</h4>
+<p class="w3-opacity">
+    <ol type="a" class="w3-opacity">
+        <li><span>
+            The plan periods in the data are either 755 or 1005 ms. Decode using less than the full plan period. Generate new models for plan periods of increasing size (50 ms to 750 ms in 50 ms
+            increments, where all plan windows begin at the target onset time). Using maximum likelihood estimation, decode the reach target for both train and test data using these different sized windows
+            of neural data. Plot the decoding accuracy as a function of the size of the decoding window. Describe what you see and why it might be like this. 
+        <br><br></span></li>
+        <li><span>
+            Now, instead of using an increasing window size, use a constant 200 ms window, but slide the window from the start time from target onset to 550 ms after target onset (use 50 ms steps). 
+            Generate new models for each window location and decode the reach target for the train and test data. Plot the decoding accuracy as a function of the temporal location of the decoding
+            window. Describe what you see, ponder why you see what you see, and finally type up your pondering thoughts. 
+        <br><br></span></li>
+    </ol>
+</p>
+</div>
+
+<footer class="w3-container w3-light-blue">
+<h4>Objectives</h4>
+<ol type='a' class="w3-opacity">
+    <li><span>
+        These will be updated soon (this weekend)! I just want to get this homework available for everyone asap!
+    </span></li>
+    <li><span>
+        Moo!
+    </span></li>
+</ol>
+</footer>
+    
+
+<header class="w3-container w3-teal">
+<h3>Problem 3</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+    <h4>Number of neurons (30 points)</h4>
+    <p class="w3-opacity">
+        In your model in Problem 1, you decoded maximum likelihood targets using all 190 neurons. Now,
+        perform a <i>"neuron dropping analysis"</i>. Starting with your full model, randomly eliminate neurons
+        and evaluate decoding accuraccy in the reduced dataset. Eliminate between 20 and 180 neurons (by 20s --
+        so decode using between 10 and 190 neurons in steps of 20 neurons) -- average each point (number of neurons)
+        by randomly choosing 20 neurons to be dropped 20 times (i.e., drop 20 neurons at each step 20 times to account
+        for variability as some neurons probably contribute more information than others). Plot decoding accuracy as a
+        function of the number of neurons available to the decoder. Describe what you see and hypothesize why this might 
+        be the case. 
+    </p>
+</div>
+    
+    <footer class="w3-container w3-light-blue">
+    <h4>Objectives</h4>
+    <ol type='a' class="w3-opacity">
+        <li><span>
+            These will be updated soon (this weekend)! I just want to get this homework available for everyone asap!
+        </span></li>
+        <li><span>
+            Moo!
+        </span></li>
+    </ol>
+</footer>
+
+<script type="text/javascript">
+    window.onload = function(){
+        var codeElement = document.getElementById('python_code');
+        var codeElement1 = document.getElementById('python_code1');
+        // Add code mirror class for coloring (default is the theme)
+        codeElement.classList.add( 'cm-s-default' );
+        var code = codeElement.innerText;
+
+        codeElement1.classList.add( 'cm-s-default' );
+        var code1 = codeElement1.innerText;
+
+        codeElement.innerHTML = "";
+        codeElement1.innerHTML = "";
+
+        CodeMirror.runMode(
+          code,
+          'python',
+          codeElement
+        )
+        CodeMirror.runMode(
+          code1,
+          'python',
+          codeElement1
+        );
+    };
+</script>
+
+<script>
+    // Get the modal
+    var modal0 = document.getElementById('Note');
+    var modal1 = document.getElementById('Beware');
+    var modal2 = document.getElementById('2b');
+    var modal2c = document.getElementById('2c');
+    var modal3 = document.getElementById('2d');
+    var modal4 = document.getElementById('3a');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal0) {
+            modal0.style.display = "none";
+        }
+
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+        if (event.target == modal4) {
+            modal4.style.display = "none";
+        }
+        if (event.target == modal2c) {
+            modal2c.style.display = "none";
+        }
+    }
+    document.addEventListener("keydown", ({key}) => {
+      if(key == "Escape"){
+        modal0.style.display = "none"
+        modal1.style.display = "none"
+        modal2.style.display = "none"
+        modal3.style.display = "none"
+        modal4.style.display = "none"
+        modal2c.style.display = "none"
+      }
+    })
+</script>  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+
+</body>
+</html>
