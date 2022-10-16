@@ -171,7 +171,7 @@ planSpikes = np.array(planSpikes) # will be 1127 x 190 </code></pre>
 
 Randomly choose 50 trials per target to be set as the training data (400 trials total). The remainng trials
 will be used as test data. We can describe the number of spikes that a neuron produces in each window (vector
-of neural counts as $\textbf{d}_{plan}$ and $\textbf{d}_{move}$, where $\textbf{n}\in\mathbb{R}^{D}$, where $D$ is
+of neural counts as $\textbf{d}_{plan}$ and $\textbf{d}_{move}$, where $\textbf{d}\in\mathbb{R}^{D}$, where $D$ is
 the number of neurons) using a wide variety of random process models. Use the training data to estimate the parameters
 of a target- direction-dependent vector Poisson process, i.e., $Pr(\textbf{d}∣target_k)∼Poisson(\textbf{λ}_k)$
 $=$ $\prod^D_d Poisson(\textbf{λ}_{k,d})$.
