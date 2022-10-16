@@ -102,8 +102,8 @@ timeGoCue = reachDataFile['timeGoCue']
 timeTargetAcquire = reachDataFile['timeTargetAcquire']
 cfr = reachDataFile['cfr']</code></pre>
 <p class = 'w3-opacity'>
-Data description: There are 1127 trials, $D$, and 190 neurons, $N$. Each of the 1127 rows in the data arrays are in
-order of the trial meaning row \(d\) of each variable corresponds to row $d$ every other variable. Please note that all 
+Data description: There are 1127 trials, $N$, and 190 neurons, $D$. Each of the 1127 rows in the data arrays are in
+order of the trial meaning row \(n\) of each variable corresponds to row $n$ every other variable. Please note that all 
 times are given in ms. 
         <ul class="w3-opacity">
         <li><span>
@@ -171,10 +171,10 @@ planSpikes = np.array(planSpikes) # will be 1127 x 190 </code></pre>
 
 Randomly choose 50 trials per target to be set as the training data (400 trials total). The remainng trials
 will be used as test data. We can describe the number of spikes that a neuron produces in each window (vector
-of neural counts as $\textbf{n}_{plan}$ and $\textbf{n}_{move}$, where $\textbf{n}\in\mathbb{R}^{N}$, where $N$ is
+of neural counts as $\textbf{d}_{plan}$ and $\textbf{d}_{move}$, where $\textbf{n}\in\mathbb{R}^{D}$, where $D$ is
 the number of neurons) using a wide variety of random process models. Use the training data to estimate the parameters
-of a target- direction-dependent vector Poisson process, i.e., $Pr(\textbf{n}∣target_k)∼Poisson(\textbf{λ}_k)$
-$=$ $\prod^N_n$ $=$ $Poisson(\textbf{λ}_{k,n})$.
+of a target- direction-dependent vector Poisson process, i.e., $Pr(\textbf{d}∣target_k)∼Poisson(\textbf{λ}_k)$
+$=$ $\prod^D_d Poisson(\textbf{λ}_{k,d})$.
 In other words, calculate a Poisson model for <i>each neuron</i> and class - the rate for a class will be a vector the
 size of the number of neurons. For each of the remaining test trials estimate the maximum <b>log</b>likelihood reach target. 
 What is the overall decoding accuracy (i.e., what fraction of trials are decoded correctly) using only the plan window data? 
