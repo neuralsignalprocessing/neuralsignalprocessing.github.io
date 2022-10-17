@@ -79,7 +79,7 @@
 
 
 <div class="w3-center w3-light-blue w3-padding">
-<h2>Homework 3 (100 points)</h2>
+<h2>Homework 3 (105 points)</h2>
 <p>Submit on Canvas by Tuesday 10/25/22 at 11:53 PM. Ask questions and discuss on Piazza. Have fun!</p>
 </div>   
 
@@ -157,7 +157,7 @@ times are given in ms.
 </header>
 
 <div class="w3-padding w3-light-blue w3-display-container">
-    <h4>Plan data only vs movement data (30 points)</h4>
+    <h4>Plan data only vs movement data (35 points)</h4>
     <p class="w3-opacity">
         Define two windows of spikes, the "plan window" encompassing spikes which were emitted between
         target onset and the go cue, and the "movement window" encompassing spikes which were emitted between
@@ -173,12 +173,14 @@ Randomly choose 50 trials per target to be set as the training data (400 trials 
 will be used as test data. We can describe the number of spikes that a neuron produces in each window (vector
 of neural counts as $\textbf{d}_{plan}$ and $\textbf{d}_{move}$, where $\textbf{d}\in\mathbb{R}^{D}$, where $D$ is
 the number of neurons) using a wide variety of random process models. Use the training data to estimate the parameters
-of a target- direction-dependent vector Poisson process, i.e., $Pr(\textbf{d}∣target_k)∼Poisson(\textbf{λ}_k)$
+of a target- direction-dependent vector Poisson process, i.e., $Pr(\textbf{d}_n∣target_k)∼Poisson(\textbf{λ}_k)$
 $=$ $\prod^D_d Poisson(\textbf{λ}_{k,d})$.
 In other words, calculate a Poisson model for <i>each neuron</i> and class - the rate for a class will be a vector the
 size of the number of neurons. For each of the remaining test trials estimate the maximum <b>log</b>likelihood reach target. 
 What is the overall decoding accuracy (i.e., what fraction of trials are decoded correctly) using only the plan window data? 
-Using only the movement window data? Combining both plan and movement data? 
+Using only the movement window data? Combining both plan and movement data? Why might these be different? Do the accuracies 
+match your expectations? Why or why not?
+
 <br><br>
 <u><b onclick="document.getElementById('Beware').style.display='block'">CLICK FOR BEWARES AND ONE HELPFUL HINT!</b></u>
     </p>
@@ -186,12 +188,25 @@ Using only the movement window data? Combining both plan and movement data?
     
     <footer class="w3-container w3-light-blue">
     <h4>Objectives</h4>
+    There are so many things to take away on this problem that it's kind of difficult to make a concise list. An attempt 
+    of key takeaways and definite things I value the most while having coffee on Monday morning are what follows.
     <ol type='a' class="w3-opacity">
         <li><span>
-            These will be updated soon (this weekend)! I just want to get this homework available for everyone asap!
+            Understanding of Bayesian inference. This should be <b>shown</b> and <b>documented/commented</b> in the code. How is the math 
+            implemented within the code? (5 points)
         </span></li>
         <li><span>
-            Moo!
+            Exploring a data structure and manipulating it. I'm not valuing this much but this is important enough to note. (1 point)
+        </span></li>
+        <li><span>
+            Is the math correctly implemented within the code? In other words, decoding accuracies should be really high
+            (>90 -- 95%). (10 points)
+        </span></li>
+        <li><span>
+            Is the code written efficently (i.e., matrix form)? (14 points)
+        </span></li>
+        <li><span>
+            Critical thinking with the data. Accounting for variability. Observations and notes. (5 points)
         </span></li>
     </ol>
 </footer>
@@ -246,10 +261,23 @@ Using only the movement window data? Combining both plan and movement data?
 <h4>Objectives</h4>
 <ol type='a' class="w3-opacity">
     <li><span>
-        These will be updated soon (this weekend)! I just want to get this homework available for everyone asap!
+        <ol type='1' class="w3-opacity">
+            <li><span>
+                Coding exercise (5 points)
+            </span></li>
+            <li><span>
+                Critical thinking for proper accounting for variability (5 points)
+            </span></li>
+            <li><span>
+                Requested plots (5 points)
+            </span></li>
+            <li><span>
+                Observations and postulations (5 points)
+            </span></li>
+        </ol>
     </span></li>
     <li><span>
-        Moo!
+        Same as a.
     </span></li>
 </ol>
 </footer>
@@ -275,12 +303,19 @@ Using only the movement window data? Combining both plan and movement data?
     
     <footer class="w3-container w3-light-blue">
     <h4>Objectives</h4>
+    Point assignments are arbitrary. I just value critical thinking and data presentation more than coding. 
     <ol type='a' class="w3-opacity">
         <li><span>
-            These will be updated soon (this weekend)! I just want to get this homework available for everyone asap!
+            Coding exercise (5 points)
         </span></li>
         <li><span>
-            Moo!
+            Critical thinking for proper accounting for variability (10 points)
+        </span></li>
+        <li><span>
+            Requested plots (5 points)
+        </span></li>
+        <li><span>
+            Observations and postulations (10 points)
         </span></li>
     </ol>
 </footer>
