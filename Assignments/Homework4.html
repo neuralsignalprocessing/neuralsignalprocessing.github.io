@@ -272,7 +272,7 @@ for i, j in zip(*np.triu_indices_from(g.axes, 0)):
     
 
 <header class="w3-container w3-teal">
-<h3>Problem 3 -- OBJECTIVES NOT DONE</h3>
+<h3>Problem 3</h3>
 </header>
 
     <div class="w3-padding w3-light-blue w3-display-container">
@@ -295,7 +295,7 @@ gmix.fit(peaks)</code></pre>
                 <li><span>
                     Use the first 5000 snippet peaks (i.e., $\mathbf{x}_m\in\mathbb{R}^4$ are the peak values of the spike snippets in each tetrode channel
                     for $n=1,...5000$ snippets), and learn the Gaussian mixture parameters for $K=10$ neurons. Plot the resulting cluster assignments in a six
-                    panel plot as in problem 2 with the clusters color-coded. 
+                    panel plot as in problem 1 with the clusters color-coded. 
                     <a href="http://scikit-learn.org/stable/auto_examples/mixture/plot_gmm_covariances.html#sphx-glr-auto-examples-mixture-plot-gmm-covariances-py" target="_blank">
                     A well documented example can be found here in the scikit-learn docs.</a>
                 </span></li>
@@ -318,25 +318,28 @@ gmix.fit(peaks)</code></pre>
     
     <footer class="w3-container w3-light-blue">
     <h4>Objectives</h4>
-    PLACE HOLDER FROM LAST HW
+    For the most part here all you're doing is utilizing the implementation in scikit-learn and evaluating what GMMs are doing.
+    I'm not actually sure why this problem was worth 50 points in the past as it is quite simple but alas it was and I'll keep it because I am lazy. But 
+    this further proves my point (pun not intended) that points are arbitrary. The K-Means implementation is harder to do than this
+    problem.
     <ol type='a' class="w3-opacity">
         <li><span>
-            Coding exercise (5 points)
+            Wow what a freebee here! Combine two code blocks basically given to you and color map the cluster assignments (10 points)
         </span></li>
         <li><span>
-            Critical thinking for proper accounting for variability (10 points)
+            Make sure you know what tesst and train sets are. Be able to write a loop and make some comments. Keep in mind this has 
+            randomness in it so which number of clusters does best will have some variability. Either make a comment about that or account for it. Otherwise
+            this is mostly just a plotting and looping exercise. Have fun! (20 points)
         </span></li>
         <li><span>
-            Requested plots (5 points)
-        </span></li>
-        <li><span>
-            Observations and postulations (10 points)
+            Extract model likelihoods properly then plot and make some comments. Comments are probably the most important exercise here. Other than that 
+            you're basically just reading the function documentation within scikit-learn. (20 points)
         </span></li>
     </ol>
     </footer>
 
 <header class="w3-container w3-teal">
-    <h3>Problem 4 -- OBJECTIVES NOT DONE</h3>
+    <h3>Problem 4</h3>
 </header>
         
     <div class="w3-padding w3-light-blue w3-display-container">
@@ -406,19 +409,22 @@ plt.imshow(cluster0)</code></pre>
             
     <footer class="w3-container w3-light-blue">
     <h4>Objectives</h4>
-    Place holder from last homework.
+    This is more fun than the problem before. Tests a couple ideas and makes you be creative :)
     <ol type='a' class="w3-opacity">
         <li><span>
-            Coding exercise (5 points)
+            Most of the code here is given to you and you're just slightly modifying it (10 points)
         </span></li>
         <li><span>
-            Critical thinking for proper accounting for variability (10 points)
+            Looking for the actual data that's closest to the cluster centroids! You actually have to slightly think
+            about how to do the minimization of the distance so a little bit of thinking involved. (15 points)
         </span></li>
         <li><span>
-            Requested plots (5 points)
-        </span></li>
-        <li><span>
-            Observations and postulations (10 points)
+            Ah finally the fun! So you have a distance formula given here. From that you need to think about what a maximum distance away from 
+            a cluster center would be and how would you find one that's specifically on the edge of 2 or more clusters? Justify what algorithm
+            you're using. This has been discussed during office hours as well as on Piazza if you need more hints or ideas. There are multiple
+            things that can be justifiable to use here! So be creative with it and have fun! :D (25 points).
+            <br><br>
+            It is worth noting this might be a good qualitative measure of how well the clustering actually did. 
         </span></li>
     </ol>
     </footer>
