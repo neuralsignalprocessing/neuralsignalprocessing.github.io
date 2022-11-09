@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Final Project</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/lib/codemirror.min.css">
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/addon/runmode/runmode-standalone.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/codemirror@5.61.0/mode/python/python.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.css" integrity="sha384-bYdxxUwYipFNohQlHt0bjN/LCpueqWz13HufFEV1SUatKs1cm4L6fFgCi1jT643X" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/katex.min.js" integrity="sha384-Qsn9KnoKISj6dI8g7p1HBlNpVx0I8p1SvlwOldgi3IorMle61nQy4zEahWYtljaz" crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.2/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+    onload="renderMathInElement(document.body);"></script>
+
+</head>
+<body>
+
+<style>
+    pre code {
+        background-color: #59b185;
+        border: 2px solid #59b185;
+        display: block;
+    }
+    code {
+        background-color: #59b185;
+        padding: 2px;
+    }
+
+    ol {
+        font-weight:bolder;
+    }
+
+    ol li span {
+        font-weight: normal;
+    }
+
+    table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    }
+
+    td, th {
+    border: 2px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+
+    tr:nth-child(odd) {
+    background-color: #59b185;
+    }
+
+    blockquote {
+    margin: 0;
+    }
+
+    blockquote p {
+        padding: 15px;
+        background: #dddddd;
+        border-radius: 5px;
+    }
+
+    blockquote p::before {
+        content: '\201C';
+    }
+
+    blockquote p::after {
+        content: '\201D';
+    }
+</style>
+
+
+<div class="w3-center w3-light-blue w3-padding">
+<h2>Final Project! (30% of your final grade apparently) </h2>
+<p>Due on the last day of finals at 11:32 pm because that only makes sense. Good luck! Have fun! Happy Holidays! Happy New Year! Have a great life if I never see you again! :)</p>
+</div>   
+
+<header class="w3-container w3-teal">
+<h3>Final Project Objective</h3>
+</header>
+
+<div class="w3-padding w3-light-blue w3-display-container">
+<p class="w3-opacity">
+    Very bluntly put here, just show me you can come up with an assignment yourself basically. Choose one of these papers or a paper of your own choosing and replicate 
+    a figure or multiple figures (if you're trying to work in groups -- undergrads are allowed to do so without multiple figures). Within the replication and writeup I 
+    just want to see that you can implement the math covered in class in code or a different analytical technique and replicate a figure with whatever data you'd like! 
+    Describe the data like each assignment does for you. Describe your methods and explain the math briefly in a writeup. Does not have to be formal (b/c let's be honest 
+    I don't want to read a lot or grade...). Finally, show the replicated figure and describe what I'm looking at and why it's cool. Overall, simply have you mastered the 
+    one of the objectives in the syllabus in the class and can you show me that? 
+    <br><br>
+    Please note that I had a chat with the previous instructor of this course about the final project and have come to the conclusion that the requirements were <i>very</i> arbitrary
+    in my opinion. He seemed to value originality of dataset moreso than implementation of the paper. When I took this class I implemented the Santhanam et al. 2009 Factor Analysis 
+    paper and the most relevant figure on that and the feedback I received was more was expected even though I explained everything I did including the Bayesian Decoding from HW3 
+    in this year's rendition and implementing Factor Analysis that was discussed in that paper. On the otherhand, running K-Means clustering and GMMs on fantasy football players to identify 
+    best players to start as flex starters was enough even though the code didn't have to be implemented?¯\_(ツ)_/¯
+    
+    <br><br>
+    As a result of ¯\_(ツ)_/¯, my overall expectation for things are simply what is listed above in the
+    previous paragraph. This may come off as vague and potentially simplistic but it is not necessarily meant to be difficult. The final problem in HW4 is a paper that's listed on here 
+    (so obviously don't use that or do that b/c it's been done) and that is apparently enough for a final project in this class. If that's not clear please reach out to me. 
+    <br><br>
+    Lastly, as mentioned in class, please email me or discuss a project abstract with me by Thanksgiving! Doesn't have to be anything formal! Thanks!
+<header class="w3-container w3-teal">
+    <h3>Point Processes</h3>
+</header>
+<p class = 'w3-opacity'>
+    <ul class="w3-opacity">
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Brown2002.pdf" target="_blank">Brown et al 2002 “The time-rescaling theorem and its application to neural spike train data analysis.”</a>
+        </span></li>
+    </ul>
+<header class="w3-container w3-teal">
+    <h3>Classification</h3>
+</header>
+    <ul class="w3-opacity">
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Kemere2004.pdf" target="_blank">Kemere et al 2004 “Model-based decoding of reaching movements for prosthetic systems.”</a>
+        </span></li>
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Yu2004.pdf" target="_blank">Yu et al 2004 “Improving neural prosthetic system performance by combining plan and peri-movement activity.”</a>
+        </span></li>
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Santhanam2009.pdf" target="_blank">Santhanam et al 2009 “Factor-analysis methods for higher-performance neural prostheses.”</a>
+        </span></li>
+    </ul>
+<header class="w3-container w3-teal">
+    <h3>Clustering</h3>
+</header>
+    <ul class="w3-opacity">
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Wild2012.pdf" target="_blank">Wild et al 2012 “Performance comparison of extracellular spike sorting algorithms for single-channel recordings.”</a>
+        </span></li>
+        <li><span>
+            <a href="https://www.sciencedirect.com/science/article/pii/S0165027010006655" target="_blank">Calabrese and Paninski 2011 “Kalman filter mixture model for spike sorting of non-stationary data.”</a>
+        </span></li>
+        <li><span>
+            The Zhang et al. eLife paper was listed here and that was the final question in homework 4 so that should give you an idea of what a final project would look like!
+        </span></li>
+    </ul>
+<header class="w3-container w3-teal">
+    <h3>Dimensionality Reduction</h3>
+</header>
+    <ul class="w3-opacity">
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Yu2009.pdf" target="_blank">Yu et al 2009 “Gaussian-process factor analysis for low-dimensional single-trial analysis of neural population activity.”</a>
+        </span></li>
+        <li><span>
+            <a href="https://www.nature.com/articles/nature11129" target="_blank">Churland et al 2012 “Neural population dynamics during reaching” (specifically jPCA, e.g., Figure 3)</a>
+        </span></li>
+        <li><span>
+            <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4433019/" target="_blank">Cunningham and Yu “Dimensionality reduction for large-scale neural recordings”</a>
+        </span></li>
+        <li><span>
+            <a href="https://pillowlab.princeton.edu/pubs/Wu17_PoissGPLVM_nips.pdf" target="_blank">Wu et al 2017 “Gaussian process based nonlinear latent structurediscovery in multivariate spike train data.”</a>
+        </span></li>
+        <li><span>
+            <a href="https://www.nature.com/articles/s41592-018-0109-9" target="_blank">Pandarinath et al 2018 “Inferring single-trial neural population dynamics using sequential auto-encoders.”</a>
+        </span></li>
+    </ul>
+<header class="w3-container w3-teal">
+    <h3>Continuous Decoding</h3>
+</header>
+    <ul class="w3-opacity">
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Kemere2005.pdf" target="_blank">Kemere and Meng 2005 “Optimal estimation of feed-foward-controlled linear systems”</a>
+        </span></li>
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Wu2004.pdf" target="_blank">Wu et al 2004 “Modeling and decoding motor cortical activity using a switching Kalman filter.”</a>
+        </span></li>
+        <li><span>
+            <a href="https://elec548.github.io/Assignments/FinalProject/Brown1998.pdf" target="_blank">Brown et al 1998 “A statistical paradigm for neural spike train decoding applied to position prediction from ensemble firing patterns of rat hippocampal place cells.”</a>
+        </span></li>
+        <li><span>
+            <a href="https://ieeexplore.ieee.org/abstract/document/7266743" target="_blank">Quang et al 2015 “The Kalman Laplace filter: A new deterministic algorithm for nonlinear Bayesian filtering”</a>
+        </span></li>
+    </ul>
+<header class="w3-container w3-teal">
+    <h3>Hidden Markov Models</h3>
+</header>
+    <ul class="w3-opacity">
+        <li><span>
+            <a href="https://elifesciences.org/articles/34467" target="_blank">Maboudi at al “Uncovering temporal structure in hippocampal output patterns”</a>
+        </span></li>
+        <li><span>
+            <a href="https://journals.physiology.org/doi/full/10.1152/jn.00924.2007" target="_blank">Kemere et al 2008 “Detecting Neural-State Transitions Using Hidden Markov Models for Motor Cortical Prostheses”</a>
+        </span></li>
+    </ul>
+<br>
+</p>
+</div>
+
+<!-- Modals -->
+<div id="Note0" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('Note1').style.display='none'"
+        class="w3-type='a'button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            This is a matrix of raw data recorded from a tetrode (a four channel electrode) in the hippocampus
+            of a long evans rat --- he was a good boy. The sampling rate is 30 kHz, and the data are simultaneous 
+            voltage signals (in $\mu$V) from each channel. I (Dr. Kemere) considered having you do the spike extraction
+            for this data --- this involves the steps we (Shay & students in 483/548) discussed in class (1) filtering
+            out LFP into spike band (600 Hz 2 pole highpass and 2 pole 6 kHz low pass) and (2) finding instances where
+            one of the channels crosses a threshold. For the sake of time, I, Dr. Caleb Tilo Kemere, decided to do this
+            for you. Additoinally, for the sake of understanding, I, Shayok "Shay" Dutta, BS, MS, decided to explore the
+            data for you and provided it within a shared notebook provided in a link shared before. Each snippet is 40 
+            sampples long, and the threshold crossing happens between the 10th and 11th samples in this data. I, Dr. Kemere,
+            chose a value of 60 $\mu$V for the threshold which Shay reverse discovers in the shared notebook because he chose 
+            to jump into exploring the data without reading the instructions (cuz like let's be real who actually would 
+            read instructions as opposed to hopping in?).
+        </div>
+    </div>
+</div>
+<div id="Note1" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-top">
+        <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('Note1').style.display='none'"
+        class="w3-type='a'button w3-display-topright">x</span>
+        </header>
+        <div class="w3-padding w3-teal">
+            I hope you're happy for me correcting this :P! I'm typing this up in the joint Kemere-Ji lab journal club while sitting right next ot you. 
+            You're also working on other stuff so I don't feel as bad for not paying attention but like let's be real...it's already 
+            30 minutes overtime and there's one person who's sleeping right now. She just woke up lol. Back to dozing off with her hand on her chin 
+            acting like she's paying attention lol. I'd be asleep if I wasn't working on other things as well so it is what it is. Are you biting your
+            lappy? Ah good now you're giving it a hug. Your macbook is happy again.
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    window.onload = function(){
+        var codeElement = document.getElementById('python_code');
+        var codeElement1 = document.getElementById('python_code1');
+        var codeElement2 = document.getElementById('python_code2');
+        var codeElement3 = document.getElementById('python_code3');
+        var codeElement4 = document.getElementById('python_code4');
+        // Add code mirror class for coloring (default is the theme)
+        codeElement.classList.add( 'cm-s-default' );
+        var code = codeElement.innerText;
+
+        codeElement1.classList.add( 'cm-s-default' );
+        var code1 = codeElement1.innerText;
+
+        codeElement2.classList.add( 'cm-s-default' );
+        var code2 = codeElement2.innerText;
+
+        codeElement3.classList.add( 'cm-s-default' );
+        var code3 = codeElement3.innerText;
+        
+        codeElement4.classList.add( 'cm-s-default' );
+        var code4 = codeElement4.innerText;
+
+        codeElement.innerHTML = "";
+        codeElement1.innerHTML = "";
+        codeElement2.innerHTML = "";
+        codeElement3.innerHTML = "";
+        codeElement4.innerHTML = "";
+
+        CodeMirror.runMode(
+          code,
+          'python',
+          codeElement
+        )
+        CodeMirror.runMode(
+          code1,
+          'python',
+          codeElement1
+        )
+        CodeMirror.runMode(
+          code2,
+          'python',
+          codeElement2
+        )
+        CodeMirror.runMode(
+          code3,
+          'python',
+          codeElement3
+        )
+        CodeMirror.runMode(
+          code4,
+          'python',
+          codeElement4
+        );
+    };
+</script>
+
+<script>
+    // Get the modal
+    var modal0 = document.getElementById('Note0');
+    var modal1 = document.getElementById('Note1');
+    var modal2 = document.getElementById('Beware');
+    var modal2c = document.getElementById('2c');
+    var modal3 = document.getElementById('2d');
+    var modal4 = document.getElementById('3a');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal0) {
+            modal0.style.display = "none";
+        }
+
+        if (event.target == modal1) {
+            modal1.style.display = "none";
+        }
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+        if (event.target == modal3) {
+            modal3.style.display = "none";
+        }
+        if (event.target == modal4) {
+            modal4.style.display = "none";
+        }
+        if (event.target == modal2c) {
+            modal2c.style.display = "none";
+        }
+    }
+    document.addEventListener("keydown", ({key}) => {
+      if(key == "Escape"){
+        modal0.style.display = "none"
+        modal1.style.display = "none"
+        modal2.style.display = "none"
+        modal3.style.display = "none"
+        modal4.style.display = "none"
+        modal2c.style.display = "none"
+      }
+    })
+</script>  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+              {left: '$$', right: '$$', display: true},
+              {left: '$', right: '$', display: false},
+              {left: '\\(', right: '\\)', display: false},
+              {left: '\\[', right: '\\]', display: true}
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+    });
+</script>
+
+</body>
+</html>
